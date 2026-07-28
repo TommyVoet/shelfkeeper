@@ -90,6 +90,38 @@
 }
 .loanlist--done .loanrow { opacity: 0.7; }
 
+/* ---------- welkomstschermen ---------- */
+.welcome {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: calc(var(--sp-8) + env(safe-area-inset-top)) var(--sp-5)
+    calc(var(--sp-6) + env(safe-area-inset-bottom));
+  text-align: center;
+}
+.welcome__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--sp-4);
+}
+.welcome__art { font-size: 64px; line-height: 1; }
+.welcome__title { font-size: var(--text-2xl); }
+.welcome__text { margin: 0; color: var(--text-muted); line-height: 1.55; font-size: var(--text-md); }
+.welcome__dots { display: flex; justify-content: center; gap: var(--sp-2); margin-bottom: var(--sp-5); }
+.welcome__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--line-strong);
+  transition: background var(--dur) var(--ease), width var(--dur) var(--ease);
+}
+.welcome__dot.is-on { width: 20px; border-radius: var(--r-full); background: var(--accent); }
+.welcome__actions { display: flex; flex-direction: column; gap: var(--sp-2); }
+
 /* ---------- cijfers ---------- */
 .tiles {
   display: grid;

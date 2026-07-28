@@ -18,6 +18,7 @@ const KEY = {
   locale: 'sk_locale',
   sort: 'sk_sort',
   view: 'sk_view',
+  onboarded: 'sk_onboarded',
 } as const;
 
 function read(key: string): string | null {
@@ -60,6 +61,14 @@ export function getLocalePref(): Locale | null {
 }
 export function setLocalePref(v: Locale | null): void {
   write(KEY.locale, v);
+}
+
+/** Heeft deze gebruiker het welkomstscherm al gezien? */
+export function isOnboarded(): boolean {
+  return read(KEY.onboarded) === '1';
+}
+export function setOnboarded(): void {
+  write(KEY.onboarded, '1');
 }
 
 export function getSortMode(): SortMode {

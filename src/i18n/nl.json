@@ -183,5 +183,18 @@
   "data.error": "Dat lukte niet: {message}",
   "data.danger": "Alles wissen",
   "data.danger.hint": "Haalt elk boek, elke plank, elk etiket en elke uitlening van dit toestel.",
-  "data.dangerConfirm": "Alles wissen? Dit kan niet ongedaan gemaakt worden — maak eerst een back-up."
+  "data.dangerConfirm": "Alles wissen? Dit kan niet ongedaan gemaakt worden — maak eerst een back-up.",
+  "welcome.next": "Volgende",
+  "welcome.skip": "Overslaan",
+  "welcome.start": "Scan mijn eerste boek",
+  "welcome.browse": "Eerst even rondkijken",
+  "welcome.1.title": "Je boeken, altijd op zak",
+  "welcome.1.body": "Sta je in de winkel te twijfelen of je dit boek al hebt? Nu weet je het in één tel.",
+  "welcome.2.title": "Scan de streepjescode",
+  "welcome.2.body": "Houd de camera achterop het boek. Titel, auteur en omslag komen er vanzelf bij — of zoek erop, of typ het zelf in.",
+  "welcome.3.title": "Blijft op je telefoon",
+  "welcome.3.body": "Geen account, geen server, geen reclame. Je collectie staat op dit toestel en werkt ook zonder bereik. Een back-up maak je wanneer je wil.",
+  "error.title": "Er ging iets mis",
+  "error.body": "Je boeken staan veilig. Laad de app opnieuw om verder te gaan.",
+  "error.reload": "Opnieuw laden"
 }

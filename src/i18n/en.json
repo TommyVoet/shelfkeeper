@@ -183,5 +183,18 @@
   "data.error": "That did not work: {message}",
   "data.danger": "Delete everything",
   "data.danger.hint": "Removes every book, shelf, label and loan from this device.",
-  "data.dangerConfirm": "Delete everything? This cannot be undone — make a back-up first."
+  "data.dangerConfirm": "Delete everything? This cannot be undone — make a back-up first.",
+  "welcome.next": "Next",
+  "welcome.skip": "Skip",
+  "welcome.start": "Scan my first book",
+  "welcome.browse": "Have a look around first",
+  "welcome.1.title": "The books you own, in your pocket",
+  "welcome.1.body": "Standing in a bookshop wondering whether you already have this one? Now you will know in a second.",
+  "welcome.2.title": "Scan the barcode",
+  "welcome.2.body": "Point the camera at the back of the book. Title, author and cover come in on their own — or search, or type it in yourself.",
+  "welcome.3.title": "Stays on your phone",
+  "welcome.3.body": "No account, no server, no advertising. Your library lives on this device and works without a connection. Make a back-up whenever you like.",
+  "error.title": "Something went wrong",
+  "error.body": "Your books are safe. Reload the app to continue.",
+  "error.reload": "Reload"
 }

@@ -183,5 +183,18 @@
   "data.error": "Cela n'a pas fonctionné : {message}",
   "data.danger": "Tout effacer",
   "data.danger.hint": "Supprime tous les livres, étagères, étiquettes et prêts de cet appareil.",
-  "data.dangerConfirm": "Tout effacer ? Action irréversible — faites d'abord une sauvegarde."
+  "data.dangerConfirm": "Tout effacer ? Action irréversible — faites d'abord une sauvegarde.",
+  "welcome.next": "Suivant",
+  "welcome.skip": "Passer",
+  "welcome.start": "Scanner mon premier livre",
+  "welcome.browse": "Jeter un œil d'abord",
+  "welcome.1.title": "Vos livres, toujours sur vous",
+  "welcome.1.body": "En librairie, vous vous demandez si vous l'avez déjà ? Vous le saurez en une seconde.",
+  "welcome.2.title": "Scannez le code-barres",
+  "welcome.2.body": "Dirigez la caméra vers le dos du livre. Titre, auteur et couverture arrivent tout seuls — ou cherchez, ou saisissez-le vous-même.",
+  "welcome.3.title": "Tout reste sur votre téléphone",
+  "welcome.3.body": "Aucun compte, aucun serveur, aucune publicité. Votre collection vit sur cet appareil et fonctionne sans connexion. Faites une sauvegarde quand vous voulez.",
+  "error.title": "Un problème est survenu",
+  "error.body": "Vos livres sont en sécurité. Rechargez l'application pour continuer.",
+  "error.reload": "Recharger"
 }
