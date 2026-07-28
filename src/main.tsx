@@ -12,4 +12,8 @@ applyAppearance();
 // zodra de gegevens binnen zijn (useStore).
 void init().catch((err) => console.error('[store] laden mislukt', err));
 
+if (import.meta.env.DEV) {
+  void import('./dev/seed').then((m) => m.installDevHelpers());
+}
+
 render(<App />, document.getElementById('app')!);

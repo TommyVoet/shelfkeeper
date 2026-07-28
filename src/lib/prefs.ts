@@ -5,15 +5,19 @@
  */
 import type { Locale } from '../i18n';
 import { LOCALES } from '../i18n';
+import type { SortMode } from './sort';
 
 export type ThemePref = 'system' | 'light' | 'dark';
 export const ACCENTS = ['green', 'indigo', 'terracotta', 'plum', 'teal', 'pink'] as const;
 export type Accent = (typeof ACCENTS)[number];
+export type ViewMode = 'grid' | 'list';
 
 const KEY = {
   theme: 'sk_theme',
   accent: 'sk_accent',
   locale: 'sk_locale',
+  sort: 'sk_sort',
+  view: 'sk_view',
 } as const;
 
 function read(key: string): string | null {
@@ -56,6 +60,21 @@ export function getLocalePref(): Locale | null {
 }
 export function setLocalePref(v: Locale | null): void {
   write(KEY.locale, v);
+}
+
+export function getSortMode(): SortMode {
+  const v = read(KEY.sort);
+  return v === 'title' || v === 'added' ? v : 'author';
+}
+export function setSortMode(v: SortMode): void {
+  write(KEY.sort, v === 'author' ? null : v);
+}
+
+export function getViewMode(): ViewMode {
+  return read(KEY.view) === 'list' ? 'list' : 'grid';
+}
+export function setViewMode(v: ViewMode): void {
+  write(KEY.view, v === 'grid' ? null : v);
 }
 
 /** Zet thema en accent op <html>; ook aangeroepen door het opstartscript in index.html. */

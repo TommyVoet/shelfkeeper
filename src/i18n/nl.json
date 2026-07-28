@@ -1,13 +1,11 @@
 {
   "app.name": "Shelfkeeper",
   "app.tagline": "Je boeken, altijd op zak.",
-
   "nav.library": "Boeken",
   "nav.shelves": "Planken",
   "nav.add": "Boek toevoegen",
   "nav.loans": "Uitgeleend",
   "nav.more": "Meer",
-
   "common.cancel": "Annuleren",
   "common.save": "Opslaan",
   "common.delete": "Verwijderen",
@@ -22,23 +20,35 @@
   "common.loading": "Bezig…",
   "common.books_one": "{count} boek",
   "common.books_other": "{count} boeken",
-
   "library.title": "Boeken",
   "library.search.placeholder": "Zoek op titel of auteur…",
   "library.empty.title": "Je plank is nog leeg",
   "library.empty.body": "Scan een streepjescode of zoek een boek om te beginnen.",
   "library.empty.cta": "Voeg je eerste boek toe",
-
+  "library.countFiltered": "{shown} van {total}",
+  "library.noResults.title": "Niets gevonden",
+  "library.noResults.body": "Dit boek heb je dus nog niet 🙂",
+  "library.noResults.cta": "Dit boek toevoegen",
+  "library.jump": "Spring naar letter",
+  "library.filter.all": "Alles",
+  "library.sort": "Sorteren",
+  "library.sort.author": "Op auteur",
+  "library.sort.title": "Op titel",
+  "library.sort.added": "Nieuwste eerst",
+  "library.view.grid": "Als omslagen tonen",
+  "library.view.list": "Als lijst tonen",
+  "status.owned": "In de kast",
+  "status.reading": "Aan het lezen",
+  "status.read": "Gelezen",
+  "status.wishlist": "Wil ik nog",
   "add.title": "Boek toevoegen",
   "add.tab.scan": "Scannen",
   "add.tab.search": "Zoeken",
   "add.tab.manual": "Handmatig",
-
   "shelves.title": "Planken",
   "loans.title": "Uitgeleend",
   "stats.title": "Cijfers",
   "more.title": "Meer",
-
   "settings.title": "Instellingen",
   "settings.appearance": "Uiterlijk",
   "settings.theme": "Thema",
@@ -56,7 +66,12 @@
   "settings.language.system": "Volg het toestel",
   "settings.data": "Je boeken",
   "settings.about": "Over deze app",
-
   "about.privacy.title": "Privé van opzet",
-  "about.privacy.body": "Alles blijft op dit toestel. Geen account, geen server, geen tracking. Boekgegevens en omslagen komen van Open Library."
+  "about.privacy.body": "Alles blijft op dit toestel. Geen account, geen server, geen tracking. Boekgegevens en omslagen komen van Open Library.",
+  "book.title": "Boek",
+  "book.notFound": "Dit boek staat niet meer in je collectie.",
+  "book.publisher": "Uitgever",
+  "book.year": "Jaar",
+  "book.pages": "Pagina’s",
+  "book.originalTitle": "Oorspronkelijke titel"
 }

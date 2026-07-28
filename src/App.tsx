@@ -5,6 +5,7 @@ import { getLocalePref, setLocalePref, applyAppearance, getThemePref } from './l
 import { BASE, ROUTES } from './lib/routes';
 import { TabBar } from './components/TabBar';
 import { Library } from './routes/Library';
+import { BookDetail } from './routes/BookDetail';
 import { Add } from './routes/Add';
 import { Shelves } from './routes/Shelves';
 import { Loans } from './routes/Loans';
@@ -55,6 +56,7 @@ export function App() {
           <Router>
             <Route path={ROUTES.library} component={Library} />
             <Route path={ROUTES.add} component={Add} />
+            <Route path={ROUTES.book} component={BookDetail} />
             <Route path={ROUTES.shelves} component={Shelves} />
             <Route path={ROUTES.loans} component={Loans} />
             <Route path={ROUTES.more} component={More} />

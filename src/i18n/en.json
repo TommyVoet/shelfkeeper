@@ -1,13 +1,11 @@
 {
   "app.name": "Shelfkeeper",
   "app.tagline": "The books you own, in your pocket.",
-
   "nav.library": "Library",
   "nav.shelves": "Shelves",
   "nav.add": "Add a book",
   "nav.loans": "Lent out",
   "nav.more": "More",
-
   "common.cancel": "Cancel",
   "common.save": "Save",
   "common.delete": "Delete",
@@ -22,23 +20,35 @@
   "common.loading": "Loading…",
   "common.books_one": "{count} book",
   "common.books_other": "{count} books",
-
   "library.title": "Library",
   "library.search.placeholder": "Search title or author…",
   "library.empty.title": "Your shelf is empty",
   "library.empty.body": "Scan a barcode or search for a book to get started.",
   "library.empty.cta": "Add your first book",
-
+  "library.countFiltered": "{shown} of {total}",
+  "library.noResults.title": "Nothing found",
+  "library.noResults.body": "So you don't have this one yet 🙂",
+  "library.noResults.cta": "Add this book",
+  "library.jump": "Jump to letter",
+  "library.filter.all": "All",
+  "library.sort": "Sort",
+  "library.sort.author": "By author",
+  "library.sort.title": "By title",
+  "library.sort.added": "Newest first",
+  "library.view.grid": "Show as covers",
+  "library.view.list": "Show as list",
+  "status.owned": "On my shelf",
+  "status.reading": "Reading",
+  "status.read": "Read",
+  "status.wishlist": "Want to read",
   "add.title": "Add a book",
   "add.tab.scan": "Scan",
   "add.tab.search": "Search",
   "add.tab.manual": "By hand",
-
   "shelves.title": "Shelves",
   "loans.title": "Lent out",
   "stats.title": "Numbers",
   "more.title": "More",
-
   "settings.title": "Settings",
   "settings.appearance": "Appearance",
   "settings.theme": "Theme",
@@ -56,7 +66,12 @@
   "settings.language.system": "Follow device",
   "settings.data": "Your books",
   "settings.about": "About",
-
   "about.privacy.title": "Private by design",
-  "about.privacy.body": "Everything stays on this device. No account, no server, no tracking. Book details and covers come from Open Library."
+  "about.privacy.body": "Everything stays on this device. No account, no server, no tracking. Book details and covers come from Open Library.",
+  "book.title": "Book",
+  "book.notFound": "This book is no longer in your library.",
+  "book.publisher": "Publisher",
+  "book.year": "Year",
+  "book.pages": "Pages",
+  "book.originalTitle": "Original title"
 }

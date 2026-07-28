@@ -35,9 +35,15 @@ export function subscribe(fn: () => void): () => void {
 }
 
 export function useStore(): State {
-  const [, force] = useState(0);
-  useEffect(() => subscribe(() => force((n) => n + 1)), []);
-  return state;
+  const [snapshot, setSnapshot] = useState(state);
+  useEffect(() => {
+    const update = () => setSnapshot(state);
+    // Meteen bijtrekken: tussen het tekenen en het abonneren kan de collectie
+    // al geladen zijn, en die melding zouden we anders missen.
+    update();
+    return subscribe(update);
+  }, []);
+  return snapshot;
 }
 
 let loading: Promise<void> | null = null;
