@@ -2,7 +2,7 @@
  * De hele collectie staat in het geheugen (zoeken moet direct zijn) en wordt
  * daarnaast in IndexedDB bewaard. Schermen luisteren via useStore().
  */
-import { useEffect, useReducer } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import * as db from './db';
 import { newId, prepareBook } from './book';
 import type { Book, BookInput, Loan, Shelf, Tag } from './types';
@@ -35,8 +35,8 @@ export function subscribe(fn: () => void): () => void {
 }
 
 export function useStore(): State {
-  const [, force] = useReducer((c: number) => c + 1, 0);
-  useEffect(() => subscribe(force), []);
+  const [, force] = useState(0);
+  useEffect(() => subscribe(() => force((n) => n + 1)), []);
   return state;
 }
 
