@@ -18,6 +18,7 @@ export const ROUTES = {
   more: to('/more'),
   stats: to('/stats'),
   settings: to('/settings'),
+  data: to('/data'),
 } as const;
 
 export const bookPath = (id: string): string => to(`/book/${encodeURIComponent(id)}`);

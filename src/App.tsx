@@ -12,6 +12,7 @@ import { Loans } from './routes/Loans';
 import { More } from './routes/More';
 import { Settings } from './routes/Settings';
 import { Stats } from './routes/Stats';
+import { Data } from './routes/Data';
 import { NotFound } from './routes/NotFound';
 
 export function App() {
@@ -61,6 +62,7 @@ export function App() {
             <Route path={ROUTES.loans} component={Loans} />
             <Route path={ROUTES.more} component={More} />
             <Route path={ROUTES.stats} component={Stats} />
+            <Route path={ROUTES.data} component={Data} />
             <Route path={ROUTES.settings} component={Settings} />
             <Route default component={NotFound} />
           </Router>

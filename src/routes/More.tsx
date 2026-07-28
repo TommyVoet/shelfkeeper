@@ -5,6 +5,7 @@ import { ROUTES } from '../lib/routes';
 
 const LINKS: { href: string; icon: IconName; key: string }[] = [
   { href: ROUTES.stats, icon: 'chart', key: 'stats.title' },
+  { href: ROUTES.data, icon: 'book', key: 'data.title' },
   { href: ROUTES.settings, icon: 'settings', key: 'settings.title' },
 ];
 
