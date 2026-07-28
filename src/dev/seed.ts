@@ -5,6 +5,7 @@
  */
 import * as store from '../lib/store';
 import { saveBooks } from '../lib/store';
+import { createScanner, hasNativeScanner } from '../lib/scan/barcode';
 import { clearAll } from '../lib/db';
 import { newId } from '../lib/book';
 import type { BookInput, BookStatus } from '../lib/types';
@@ -76,6 +77,7 @@ declare global {
     __seed: typeof seed;
     __wipe: typeof wipe;
     __store: typeof store;
+    __scan: { createScanner: typeof createScanner; hasNativeScanner: typeof hasNativeScanner };
   }
 }
 
@@ -83,5 +85,7 @@ export function installDevHelpers(): void {
   window.__seed = seed;
   window.__wipe = wipe;
   window.__store = store;
-  console.info('[dev] __seed(n), __wipe() en __store staan klaar');
+  // Zo is de streepjescodelezer ook zonder camera te proberen, op een canvas.
+  window.__scan = { createScanner, hasNativeScanner };
+  console.info('[dev] __seed(n), __wipe(), __store en __scan staan klaar');
 }

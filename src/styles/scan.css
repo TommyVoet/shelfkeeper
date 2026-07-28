@@ -1,0 +1,144 @@
+/* Camerascherm voor het scannen van streepjescodes. */
+
+.scanner {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  margin-top: var(--sp-2);
+  background: #14110f;
+  border-radius: var(--r-lg);
+}
+.scanner__video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease);
+}
+.scanner.is-live .scanner__video { opacity: 1; }
+
+.scanner__overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  color: #f3f0ea;
+  text-align: center;
+}
+
+/* Kader waar de streepjescode in moet vallen. */
+.scanner__frame {
+  position: absolute;
+  inset: 22% 10%;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: var(--r-md);
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.35);
+}
+.scanner__frame::after {
+  content: '';
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 50%;
+  height: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: scanline 2s ease-in-out infinite;
+}
+@keyframes scanline {
+  0%, 100% { transform: translateY(-34px); }
+  50% { transform: translateY(34px); }
+}
+
+.scanner__hint { text-align: center; }
+.scanner__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin: var(--sp-2) 0 var(--sp-4);
+}
+.scanner__controls .btn { margin-left: auto; flex: none; padding: 0 var(--sp-4); }
+.scanner__sessiontitle { margin-top: var(--sp-6); }
+
+/* schakelaar "meteen toevoegen" */
+.switch { display: inline-flex; align-items: center; gap: var(--sp-2); font-size: var(--text-base); }
+.switch input {
+  appearance: none;
+  position: relative;
+  width: 44px;
+  height: 26px;
+  background: var(--surface-2);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-full);
+  transition: background var(--dur-fast) var(--ease);
+}
+.switch input::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--dur-fast) var(--ease);
+}
+.switch input:checked { background: var(--accent); border-color: var(--accent); }
+.switch input:checked::after { transform: translateX(18px); }
+
+/* uitslag van een scan */
+.scanhit {
+  margin: var(--sp-3) 0;
+  padding: var(--sp-4);
+  border-radius: var(--r-lg);
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+}
+.scanhit--have { border-color: var(--accent); background: var(--accent-soft); }
+.scanhit--added { border-color: var(--ok); background: var(--ok-soft); }
+.scanhit--unknown { border-color: var(--warn); background: var(--warn-soft); }
+.scanhit__label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.scanhit--have .scanhit__label { color: var(--accent-text); }
+.scanhit--added .scanhit__label { color: var(--ok); }
+.scanhit--unknown .scanhit__label { color: var(--warn); }
+.scanhit__title {
+  margin-top: var(--sp-1);
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1.3;
+}
+.scanhit__author { font-size: var(--text-base); color: var(--text-muted); }
+.scanhit__actions { display: flex; gap: var(--sp-2); margin-top: var(--sp-3); }
+.scanhit__actions .btn { flex: 1; }
+
+/* lijstje van wat je net gescand hebt */
+.scanlist { display: flex; flex-direction: column; gap: var(--sp-1); }
+.scanlist li {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  font-size: var(--text-sm);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+}
+.scanlist__title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.scanlist .badge { margin-top: 0; }

@@ -6,6 +6,7 @@ import { useT } from '../i18n';
 import { ROUTES } from '../lib/routes';
 import { SearchTab } from './add/SearchTab';
 import { ManualTab } from './add/ManualTab';
+import { ScanTab } from './add/ScanTab';
 
 type Mode = 'scan' | 'search' | 'manual';
 
@@ -18,8 +19,9 @@ const MODES: { id: Mode; icon: IconName; key: string }[] = [
 export function Add() {
   const t = useT();
   const { query } = useLocation();
-  // De scanner stuurt hierheen als een gescand boek niet gevonden is.
-  const [mode, setMode] = useState<Mode>((query.mode as Mode) || 'search');
+  // Scannen staat vooraan: dat is waar deze app voor bedoeld is. De scanner
+  // stuurt hierheen met ?mode=manual als een gescand boek niet gevonden is.
+  const [mode, setMode] = useState<Mode>((query.mode as Mode) || 'scan');
 
   return (
     <>
@@ -42,12 +44,7 @@ export function Add() {
 
         {mode === 'search' && <SearchTab />}
         {mode === 'manual' && <ManualTab initialIsbn={query.isbn ?? ''} />}
-        {mode === 'scan' && (
-          <div class="empty">
-            <div class="empty__art" aria-hidden="true">📷</div>
-            <p>…</p>
-          </div>
-        )}
+        {mode === 'scan' && <ScanTab />}
       </main>
     </>
   );

@@ -32,12 +32,24 @@ export default defineConfig({
       workbox: {
         // Alleen de latijnse letterbestanden vooraf cachen; cyrillisch/grieks/vietnamees
         // worden door de browser toch nooit opgehaald voor EN/NL/FR.
-        globPatterns: ['**/*.{js,css,html,svg,png,wasm}', '**/*latin*.woff2'],
+        // De WebAssembly-lezer (1 MB) staat er bewust niet bij: die is alleen nodig
+        // op iPhone/Firefox en wordt pas bij het eerste scannen opgehaald.
+        globPatterns: ['**/*.{js,css,html,svg,png}', '**/*latin*.woff2'],
         // Diepe links (/book/…) moeten de app-shell krijgen, geen 404.
         navigateFallback: '/shelfkeeper/index.html',
         navigateFallbackDenylist: [/^\/shelfkeeper\/assets\//],
         // Omslagen mogen lang blijven staan: ze veranderen niet.
         runtimeCaching: [
+          {
+            // Na één keer scannen blijft de lezer ook offline beschikbaar.
+            urlPattern: /\.wasm$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'scanner-wasm',
+              expiration: { maxEntries: 4 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
           {
             urlPattern: /^https:\/\/covers\.openlibrary\.org\/.*/i,
             handler: 'CacheFirst',
