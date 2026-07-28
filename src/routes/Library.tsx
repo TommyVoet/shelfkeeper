@@ -21,13 +21,15 @@ const SORT_ORDER: SortMode[] = ['author', 'title', 'added'];
 export function Library() {
   const t = useT();
   const { locale } = useI18n();
-  const { books, shelves, ready } = useStore();
+  const { books, shelves, tags, ready } = useStore();
   const { query: urlQuery, route } = useLocation();
 
+  // De plank- en etiketschermen linken hierheen met ?shelf=… of ?tag=…
   const [q, setQ] = useState(urlQuery.q ?? '');
   const [sort, setSort] = useState<SortMode>(getSortMode);
   const [view, setView] = useState<ViewMode>(getViewMode);
-  const [shelfId, setShelfId] = useState<string | null>(null);
+  const [shelfId, setShelfId] = useState<string | null>(urlQuery.shelf ?? null);
+  const [tagId, setTagId] = useState<string | null>(urlQuery.tag ?? null);
   const [status, setStatus] = useState<BookStatus | null>(null);
   const [visible, setVisible] = useState(CHUNK);
   const [pendingJump, setPendingJump] = useState<number | null>(null);
@@ -35,15 +37,16 @@ export function Library() {
   const listRef = useRef<HTMLUListElement>(null);
 
   const tokens = useMemo(() => tokenize(q), [q]);
-  const filtering = tokens.length > 0 || shelfId !== null || status !== null;
+  const filtering = tokens.length > 0 || shelfId !== null || tagId !== null || status !== null;
 
   const shown = useMemo(() => {
     let list = books;
     if (shelfId) list = list.filter((b) => b.shelfIds.includes(shelfId));
+    if (tagId) list = list.filter((b) => b.tagIds.includes(tagId));
     if (status) list = list.filter((b) => b.status === status);
     if (tokens.length) list = list.filter((b) => matchesTokens(b.hay, tokens));
     return sortBooks(list, sort, locale);
-  }, [books, shelfId, status, tokens, sort, locale]);
+  }, [books, shelfId, tagId, status, tokens, sort, locale]);
 
   const letters = useMemo(
     () => (filtering || sort === 'added' ? [] : presentLetters(shown, sort)),
@@ -57,7 +60,7 @@ export function Library() {
   }, [books]);
 
   // Bij een nieuwe zoekopdracht weer bovenaan beginnen.
-  useEffect(() => setVisible(CHUNK), [q, shelfId, status, sort]);
+  useEffect(() => setVisible(CHUNK), [q, shelfId, tagId, status, sort]);
 
   // Meer boeken tekenen zodra het einde van de lijst in zicht komt.
   // Bewust met een scroll-luisteraar en niet met IntersectionObserver: die
@@ -163,17 +166,23 @@ export function Library() {
             )}
           </div>
 
-          {(shelves.length > 0 || otherStatuses.length > 0) && (
+          {(shelves.length > 0 || otherStatuses.length > 0 || tagId !== null) && (
             <div class="chips" role="group">
               <button
-                class={`chip${shelfId === null && status === null ? ' is-active' : ''}`}
+                class={`chip${shelfId === null && status === null && tagId === null ? ' is-active' : ''}`}
                 onClick={() => {
                   setShelfId(null);
                   setStatus(null);
+                  setTagId(null);
                 }}
               >
                 {t('library.filter.all')}
               </button>
+              {tagId && (
+                <button class="chip is-active" onClick={() => setTagId(null)}>
+                  {tags.find((x) => x.id === tagId)?.name ?? t('tags.title')}
+                </button>
+              )}
               {shelves.map((s) => (
                 <button
                   key={s.id}
