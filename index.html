@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Shelfkeeper</title>
+    <meta
+      name="description"
+      content="Keep track of the books you own. Scan a barcode, search, shelve — offline and private."
+    />
+    <meta name="theme-color" content="#f7f5f2" />
+    <link rel="icon" href="%BASE_URL%icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="%BASE_URL%apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Shelfkeeper" />
+    <script>
+      /* Thema vóór de eerste tekening zetten, anders flitst het verkeerde thema. */
+      (function () {
+        try {
+          var pref = localStorage.getItem('sk_theme');
+          var dark =
+            pref === 'dark' ||
+            (pref !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
+          var root = document.documentElement;
+          root.dataset.theme = dark ? 'dark' : 'light';
+          root.dataset.accent = localStorage.getItem('sk_accent') || 'green';
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute('content', dark ? '#131211' : '#f7f5f2');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

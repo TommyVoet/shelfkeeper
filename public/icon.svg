@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Shelfkeeper">
+  <rect width="512" height="512" rx="112" fill="#2f6b52"/>
+  <g fill="#f7f5f2">
+    <rect x="150" y="150" width="68" height="246" rx="10"/>
+    <rect x="226" y="118" width="68" height="278" rx="10"/>
+    <rect x="302" y="168" width="68" height="228" rx="10"/>
+    <rect x="118" y="384" width="276" height="26" rx="13"/>
+  </g>
+  <g fill="#2f6b52" opacity="0.55">
+    <rect x="162" y="196" width="44" height="12" rx="6"/>
+    <rect x="238" y="164" width="44" height="12" rx="6"/>
+    <rect x="314" y="214" width="44" height="12" rx="6"/>
+  </g>
+</svg>

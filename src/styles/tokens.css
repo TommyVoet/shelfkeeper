@@ -1,0 +1,184 @@
+/* Design-tokens.
+   Thema (licht/donker) staat op <html data-theme>, accentkleur op <html data-accent>.
+   Alles wat kleur of maat heeft, hoort hier — nergens anders hardgecodeerde kleuren. */
+
+:root {
+  /* ---- typografie ---- */
+  --font-sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Literata Variable', Georgia, 'Times New Roman', serif;
+
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.8125rem;  /* 13px */
+  --text-base: 0.9375rem;/* 15px */
+  --text-md: 1rem;       /* 16px — invoervelden: kleiner zoomt iOS in */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.375rem;   /* 22px */
+  --text-2xl: 1.75rem;   /* 28px */
+
+  /* ---- ruimte ---- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+
+  /* ---- vormen ---- */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 22px;
+  --r-full: 999px;
+
+  --tap: 44px; /* kleinste aanraakdoel */
+
+  /* ---- lagen ---- */
+  --z-nav: 40;
+  --z-sticky: 30;
+  --z-sheet: 60;
+  --z-toast: 70;
+
+  /* ---- beweging ---- */
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --dur-fast: 120ms;
+  --dur: 200ms;
+}
+
+/* ---------- licht (standaard) ---------- */
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: #f7f5f2;          /* warm papier */
+  --bg-elevated: #fffefc;
+  --surface: #ffffff;
+  --surface-2: #f1eee9;
+  --text: #1c1a17;
+  --text-muted: #6c665e;
+  --text-faint: #948d84;
+  --line: #e4dfd7;
+  --line-strong: #d2ccc2;
+
+  --shadow-sm: 0 1px 2px rgba(28, 26, 23, 0.06), 0 1px 3px rgba(28, 26, 23, 0.04);
+  --shadow-md: 0 2px 6px rgba(28, 26, 23, 0.07), 0 6px 16px rgba(28, 26, 23, 0.06);
+  --shadow-lg: 0 8px 32px rgba(28, 26, 23, 0.14);
+
+  --ok: #1f7a4d;
+  --ok-soft: #e3f3ea;
+  --warn: #a56410;
+  --warn-soft: #fbeedb;
+  --danger: #b3382e;
+  --danger-soft: #fbe9e7;
+
+  --scrim: rgba(28, 26, 23, 0.42);
+}
+
+/* ---------- donker ---------- */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: #131211;
+  --bg-elevated: #1b1a18;
+  --surface: #1e1c1a;
+  --surface-2: #272522;
+  --text: #f3f0ea;
+  --text-muted: #a8a199;
+  --text-faint: #7e7770;
+  --line: #302d2a;
+  --line-strong: #423e3a;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.45), 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 10px 36px rgba(0, 0, 0, 0.6);
+
+  --ok: #5fca92;
+  --ok-soft: #17301f;
+  --warn: #e5a851;
+  --warn-soft: #322512;
+  --danger: #f08b7f;
+  --danger-soft: #33191a;
+
+  --scrim: rgba(0, 0, 0, 0.6);
+}
+
+/* ---------- accentkleuren ----------
+   Elke set: --accent (vlak), --accent-ink (tekst óp accent),
+   --accent-text (accent als tekst op de achtergrond, contrastveilig),
+   --accent-soft (getinte achtergrond). */
+
+:root,
+:root[data-accent='green'] {
+  --accent: #2f6b52;
+  --accent-ink: #ffffff;
+  --accent-text: #2a604a;
+  --accent-soft: #e4efe9;
+}
+:root[data-accent='indigo'] {
+  --accent: #4a55b8;
+  --accent-ink: #ffffff;
+  --accent-text: #444fae;
+  --accent-soft: #e7e8f7;
+}
+:root[data-accent='terracotta'] {
+  --accent: #b4532f;
+  --accent-ink: #ffffff;
+  --accent-text: #a44a29;
+  --accent-soft: #f8e8e1;
+}
+:root[data-accent='plum'] {
+  --accent: #7a3b78;
+  --accent-ink: #ffffff;
+  --accent-text: #723672;
+  --accent-soft: #f3e7f2;
+}
+:root[data-accent='teal'] {
+  --accent: #1c6a72;
+  --accent-ink: #ffffff;
+  --accent-text: #196068;
+  --accent-soft: #e0eff0;
+}
+:root[data-accent='pink'] {
+  --accent: #c72a80;
+  --accent-ink: #ffffff;
+  --accent-text: #b82676;
+  --accent-soft: #fbe4f1;
+}
+
+:root[data-theme='dark'][data-accent='green'] {
+  --accent: #4e9c78;
+  --accent-ink: #0d1712;
+  --accent-text: #74bb98;
+  --accent-soft: #1a2c23;
+}
+:root[data-theme='dark'][data-accent='indigo'] {
+  --accent: #7b85dd;
+  --accent-ink: #0e1030;
+  --accent-text: #98a1e8;
+  --accent-soft: #1f2140;
+}
+:root[data-theme='dark'][data-accent='terracotta'] {
+  --accent: #dd7d55;
+  --accent-ink: #2a1108;
+  --accent-text: #e79873;
+  --accent-soft: #341c13;
+}
+:root[data-theme='dark'][data-accent='plum'] {
+  --accent: #b775b5;
+  --accent-ink: #231022;
+  --accent-text: #c78ec5;
+  --accent-soft: #2c1b2b;
+}
+:root[data-theme='dark'][data-accent='teal'] {
+  --accent: #43a2ab;
+  --accent-ink: #06211f;
+  --accent-text: #63b9c1;
+  --accent-soft: #142c2e;
+}
+:root[data-theme='dark'][data-accent='pink'] {
+  --accent: #ef6cae;
+  --accent-ink: #2b0a1c;
+  --accent-text: #f28cbf;
+  --accent-soft: #331522;
+}
