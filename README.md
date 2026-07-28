@@ -5,7 +5,11 @@ Keep track of the books you own. Scan a barcode, search, shelve — offline and 
 Alles blijft op het toestel: geen account, geen server, geen tracking. Boekgegevens en
 omslagen komen van [Open Library](https://openlibrary.org).
 
+**Live:** https://tommyvoet.github.io/shelfkeeper/ — open op je telefoon en kies
+*Toevoegen aan beginscherm*, dan gedraagt hij zich als een gewone app.
+
 > **Werknaam.** De definitieve naam ligt pas vast vóór de Play Store-inzending.
+> `Bookshelf`, `Shelfie`, `Book Keeper` en `BookVault` zijn allemaal al bezet.
 
 ## Ontwikkelen
 
@@ -35,6 +39,18 @@ node scripts/make-icons.mjs
 | Talen | Engels (basis), Nederlands, Frans — volgt de taal van het toestel |
 
 De app draait onder `/shelfkeeper/`; alle routepaden lopen via `src/lib/routes.ts`.
+Elke push naar `main` bouwt, test en publiceert automatisch (zie
+[.github/workflows/deploy.yml](.github/workflows/deploy.yml)).
+
+## Wat er nog wacht
+
+- **Google Drive-back-up** — vraagt eenmalig een gratis Google Cloud-project met
+  een OAuth-toestemmingsscherm (scope `drive.file`, geen Google-controle nodig).
+- **Play Store** — verpakken als TWA met Bubblewrap. Let op: €25 eenmalig, en
+  een nieuw persoonlijk ontwikkelaarsaccount moet eerst een gesloten test doen
+  met **12 testers, 14 dagen aaneen**. `assetlinks.json` moet op de hoofdmap van
+  het domein staan; `tommyvoet.github.io/shelfkeeper/` kan dat niet zelf, dus
+  daarvoor is een `tommyvoet.github.io`-repo of een eigen domein nodig.
 
 ## Herkomst
 
