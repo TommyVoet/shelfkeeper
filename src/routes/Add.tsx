@@ -1,8 +1,11 @@
 import { useState } from 'preact/hooks';
+import { useLocation } from 'preact-iso';
 import { TopBar } from '../components/TopBar';
 import { Icon, type IconName } from '../components/Icon';
 import { useT } from '../i18n';
 import { ROUTES } from '../lib/routes';
+import { SearchTab } from './add/SearchTab';
+import { ManualTab } from './add/ManualTab';
 
 type Mode = 'scan' | 'search' | 'manual';
 
@@ -14,7 +17,9 @@ const MODES: { id: Mode; icon: IconName; key: string }[] = [
 
 export function Add() {
   const t = useT();
-  const [mode, setMode] = useState<Mode>('scan');
+  const { query } = useLocation();
+  // De scanner stuurt hierheen als een gescand boek niet gevonden is.
+  const [mode, setMode] = useState<Mode>((query.mode as Mode) || 'search');
 
   return (
     <>
@@ -34,9 +39,15 @@ export function Add() {
             </button>
           ))}
         </div>
-        <div class="empty">
-          <p>…</p>
-        </div>
+
+        {mode === 'search' && <SearchTab />}
+        {mode === 'manual' && <ManualTab initialIsbn={query.isbn ?? ''} />}
+        {mode === 'scan' && (
+          <div class="empty">
+            <div class="empty__art" aria-hidden="true">📷</div>
+            <p>…</p>
+          </div>
+        )}
       </main>
     </>
   );
